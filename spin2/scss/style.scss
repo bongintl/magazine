@@ -1,0 +1,129 @@
+body {
+    font-family: sans-serif;
+}
+
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &__left, &__right {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        overflow: hidden;
+    }
+    
+    &__right {
+        left: 50%;
+    }
+    
+}
+
+.line {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: black;
+    height: 1px;
+}
+
+.image {
+    
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    &_full {
+        background-size: cover;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    &_full-left {
+        background-size: cover;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 100%;
+    }
+    
+    &_full-right {
+        background-size: cover;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+    }
+    
+    &_frame {
+        background-size: contain;
+        top: 20%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+    }
+    
+    &_frame-left{
+        background-size: contain;
+        top: 20%;
+        height: 60%;
+        left: 40%;
+        width: 120%;
+    }
+    &_frame-right {
+        background-size: contain;
+        top: 20%;
+        height: 60%;
+        left: -60%;
+        width: 120%;
+    }
+    
+    &_bottom {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-size: cover;
+    }
+    
+    &_top {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-size: cover;
+    }
+    
+}
+
+.title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 2vw;
+    &_left {
+        left: 100%;
+        width: 200%;
+        font-size: 25vw;
+    }
+    &_right {
+        left: 0;
+        width: 20em;
+        font-size: 25vw;
+    }
+}

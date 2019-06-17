@@ -1,0 +1,368 @@
+@import 'breakpoints';
+
+$colors: #9acaff, #ffe69a, #9affa3, #ffab9a, #edbeee, #e8c7aa, #aae8e7;
+
+* {
+    box-sizing: border-box;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: transform .25s;
+    background: white;
+    
+    @include tablet-landscape {
+        height: auto;
+        top: 2rem;
+        bottom: 0;
+    }
+    
+    &_menu-open {
+        transform: translateX(90%);
+        @include tablet-landscape {
+            transform: none;
+        }
+    }
+    
+}
+
+.tabs {
+    
+    position: fixed;
+    width: 90%;
+    height: 100%;
+    top: 0;
+    border-right: 1px solid black;
+    
+    @include tablet-landscape {
+        
+        width: 100%;
+        height: 2rem;
+        white-space: nowrap;
+        display: flex;
+        border-right: none;
+        z-index: 20;
+        
+    }
+    
+}
+
+.tab {
+    
+    // border-bottom: 1px solid black;
+    // border-right: 1px solid black;
+    padding: 1em 2em;
+    cursor: pointer;
+    transition: background 1s, box-shadow 1s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
+    font-weight: 300;
+    
+    // @for $i from 1 through length($colors) {
+        
+    //     $c: nth($colors, $i);
+        
+    //     &:nth-child(#{$i}) {
+    //         background: $c;
+    //         .bubble {
+    //             color: $c;
+    //         }
+    //     }
+        
+    // }
+    
+    // &:hover {
+    //     background: gainsboro;
+    // }
+    
+    &_active {
+        cursor: default;
+        font-weight: normal;
+        border-right: none;
+    }
+    
+    &_active, &_active:hover {
+        // background: white !important;
+    }
+    
+    .bubble {
+        position: absolute;
+        right: .6em;
+        top: .8em;
+        @include tablet-landscape {
+            top: .28em;
+            right: .25em;
+        }
+    }
+    
+    @include tablet-landscape {
+        
+        flex: 1 1 0;
+        text-align: center;
+        height: 100%;
+        padding: .5em 2em;
+        
+        &:not(:last-child) {
+            // border-right: 1px solid black;
+        }
+        
+        &_active {
+            border-bottom: none;
+        }
+        
+        .throbber {
+            position: absolute;
+            top: .2em;
+            left: .35em;
+            font-size: 1.3em;
+            display: block;
+        }
+        
+    }
+    
+}
+
+.bubble {
+    padding: .22em .4em .18em .4em;
+    border-radius: 10em;
+    // min-width: 1.25em;
+    text-align: center;
+    background: red;
+    color: white;
+    position: absolute;
+    font-weight: bold;
+    min-width: 1.4em;
+}
+
+.article {
+    position: absolute;
+    top: 3rem;
+    width: 100%;
+    bottom: 0;
+    // font-family: 'EB Garamond', serif;
+    line-height: 1.5;
+    font-size: 20px;
+    font-weight: 300;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    @include tablet-landscape {
+        top: 0;
+        font-size: 26px;
+    }
+    p{
+        max-width: 30em;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 .5em;
+        &:first-child {
+            margin-top: 4em;
+        }
+        &:last-child {
+            margin-bottom: 50vh;
+        }
+    }
+    
+    span {
+        border-radius: 4px;
+        position: relative;
+    }
+    
+    &:after {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 2rem;
+        height: 100px;
+        width: 100%;
+    }
+    
+    // @for $i from 1 through length($colors) {
+    
+    //     $c: nth($colors, $i);
+        
+    //     @keyframes highlight-#{$i} {
+    //         0%{
+    //             opacity: 0;
+    //             background: $c;
+    //             box-shadow: 0 0 10px 5px $c;
+    //             top: 100vh;
+    //         }
+    //         12.5% {
+    //             opacity: 1;
+    //             top: 0;
+    //         }
+    //     }
+        
+    //     &:nth-child(#{$i + 1}) {
+            
+    //         &:after {
+    //             background: linear-gradient( to bottom, $c 0, transparent 50px );
+    //         }
+            
+    //         span {
+    //             animation: highlight-#{$i} 4s;
+    //         }
+    //     }
+        
+    // }
+    
+}
+
+.notifications {
+    
+    position: fixed;
+    width: 100%;
+    right: 0;
+    top: calc( 100% - 110px );
+    
+    @include tablet-landscape {
+        width: 25em;
+        top: 2em;
+        bottom: 0;
+    }
+    
+}
+
+.notification {
+    padding: 1em;
+    background: white;
+    // border: 1px solid black;
+    cursor: pointer;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    right: 1em;
+    transition: transform .5s, opacity .75s;
+    border-radius: 5px;
+    
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    animation: fade-in .75s;
+    
+    &__title {
+        font-weight: bold;
+        margin-bottom: .5em;
+    }
+    &__text {
+        max-height: 3em;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    
+    &_fade-out {
+        opacity: 0;
+    }
+    
+    // @for $i from 1 through length($colors) {
+    
+    //     $c: nth($colors, $i);
+        
+    //     &_tab-#{$i} {
+    //         box-shadow: 0 10px 35px $c;
+    //         // background: $c;
+    //     }
+        
+    // }
+
+    
+}
+
+.throbber {
+    display: inline-block;
+    @keyframes bounce {
+        0%{
+            transform: none;
+        }
+        25%{
+            transform: translateY(-.33em);
+        }
+        50%{
+            transform: none;
+        }
+    }
+    span {
+        display: inline-block;
+    }
+    span:nth-child(1) {
+        animation: bounce 1s linear infinite;
+    }
+    span:nth-child(2) {
+        animation: bounce 1s .25s linear infinite;
+    }
+    span:nth-child(3) {
+        animation: bounce 1s .5s linear infinite;
+    }
+}
+
+.header {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    height: 3em;
+    border-bottom: 1px solid black;
+    transition: opacity 2s;
+    
+    @include tablet-landscape {
+        display: none;
+    }
+    
+    &_hidden {
+        opacity: 0;
+    }
+    
+    .burger {
+        position: absolute;
+        left: .75rem;
+        top: .875rem;
+        .bubble {
+            position: absolute;
+            font-size: .75em;
+            top: -.6em;
+            left: 1.1em;
+            z-index: 10;
+            // right: -.5em;
+        }
+    }
+    
+}
+
+.burger {
+    height: 1.25rem;
+    width: 1.5rem;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: black;
+    }
+}

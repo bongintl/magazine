@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+$step: 200px;
+
+.root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.item {
+    
+    &:not(:last-child){
+        margin-bottom: $step;
+    }
+    
+}
+
+.slots {
+    
+    overflow: hidden;
+    border: 3px solid black;
+    background: white;
+    
+    &__inner {
+        
+        padding: $step / 2;
+        
+    }
+    
+}
+
+// .slots {
+    
+//     overflow: hidden;
+    
+//     border: 3px solid black;
+    
+//     &__inner {
+//         width: 100%;
+//         padding: $step / 2;
+//     }
+    
+// }
+
+// .slots.root {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     height: 100%;
+//     width: 100%;
+//     border: none;
+// }
+
+// .slots__inner > div {
+    
+//     width: calc( 100vw - #{ $step } );
+//     height: calc( 100vh - #{ $step } );
+    
+//     &:not(:last-child){
+//         margin-bottom: $step / 2;
+//     }
+    
+// }
+
+// .slots__inner .slots__inner > div {
+    
+//     width: calc( 100vw - #{ $step * 2 } );
+//     height: calc( 100vh - #{ $step * 2 } );
+    
+// }
+
+// .title {
+//     display: block;
+//     font-size: $step / 6;
+//     line-height: 1;
+//     padding: $step / 12;
+// }
+
+.image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  height: 100%;
+  background: white; }
+
+main {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
+.spinner {
+  position: fixed;
+  width: 100%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  background: white;
+  border-bottom: 1px solid black;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%; }
+
+.image {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 40%;
+  visibility: hidden; }
+  .image_left {
+    visibility: visible;
+    left: 25%; }
+  .image_right {
+    visibility: visible;
+    left: 75%; }
